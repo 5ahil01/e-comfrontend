@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../Components/CLandingPage/Navbar";
+import Navbar from "../Components/Common/Navbar";
 
 const CustomerLayout = ({ children }) => {
   return (

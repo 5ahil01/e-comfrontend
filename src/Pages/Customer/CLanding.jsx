@@ -1,7 +1,7 @@
 import React from "react";
-import CustomerLayout from "../Layouts/CustomerLayout";
-import SearchBar from "../Components/CLandingPage/SearchBar";
-import ProductList from "../Components/CLandingPage/ProductList";
+import CustomerLayout from "../../Layouts/CustomerLayout";
+import SearchBar from "../../Components/Common/SearchBar";
+import ProductList from "../../Components/Product/ProductList";
 
 const CLanding = () => {
   return (
