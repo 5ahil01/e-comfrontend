@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { authUser } from "../../features/auth/authUserSlice";
 
 const Login = () => {
+  const user = useSelector((state) => state.authUser.user);
+  const loading = useSelector((state) => state.authUser.loading);
+  const error = useSelector((state) => state.authUser.error);
   const [formData, setFormData] = useState({
     email: "",
-    password: "",
+    password: "", 
   });
   const [showPassword, setShowPassword] = useState(false);
 
@@ -17,6 +22,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    authUser({authType: "login", role: "customer", formData});
     console.log("Login attempt:", formData);
   };
 

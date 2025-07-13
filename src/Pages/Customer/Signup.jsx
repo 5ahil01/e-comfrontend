@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { authUser } from "../../features/auth/authUserSlice";    
+import { useSelector } from "react-redux";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -21,6 +23,7 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    authUser({authType: "signup", role: "customer", formData});
     console.log("Signup attempt:", formData);
   };
 

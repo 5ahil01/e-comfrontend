@@ -9,6 +9,7 @@ import Signup from "./Pages/Customer/Signup";
 const App = () => {
   return (
     <div>
+      
       <Routes>
         <Route path="/" element={<CLanding />} />
         <Route path="/home" element={<CLanding />} />
