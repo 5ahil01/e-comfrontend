@@ -1,10 +1,11 @@
 import React from "react";
-import Navbar from "../Components/CLandingPage/Navbar";
+import Navbar from "../Components/Common/Navbar";
 
-const MerchantLayout = () => {
+const MerchantLayout = ({ children }) => {
   return (
     <div>
-      <Navbar />
+      <Navbar role="merchant"  />
+      <main>{children}</main>
     </div>
   );
 };

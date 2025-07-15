@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const authUser = createAsyncThunk(
+export const authUserThunk = createAsyncThunk(
   "auth/login",
   async ({ authType, role, formData }, thunkApi) => {
     try {
@@ -12,9 +12,10 @@ export const authUser = createAsyncThunk(
         body: JSON.stringify(formData),
       });
 
+      console.log("From authUserSlice.js", response);
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || "Login Failed");
+        throw new Error(errorData.message || `${authType} Failed`);
       }
 
       const data = await response.json();
@@ -40,21 +41,21 @@ export const authUserSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(authUser.pending, (state) => {
+      .addCase(authUserThunk.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(authUser.fulfilled, (state, action) => {
+      .addCase(authUserThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload.data;
         state.role = action.payload.role;
         state.isAuth = true;
       })
-      .addCase(authUser.rejected, (state, action) => {
+      .addCase(authUserThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
   },
 });
 
-export default authUser.reducer;
+export const authUserReducer = authUserSlice.reducer;

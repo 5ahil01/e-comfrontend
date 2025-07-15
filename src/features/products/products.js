@@ -12,7 +12,7 @@ export const fetchProducts = createAsyncThunk(
             if (sort) params.append("sort", sort);
 
             const query = params.toString() ? `?${params.toString()}` : "";
-            const response = await fetch(`/api/products${query}`);
+            const response = await fetch(`/api/customer/products${query}`);
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
